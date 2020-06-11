@@ -1,0 +1,71 @@
+﻿<Window x:Class="TechVault.OpenedDatabaseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TechVault"
+        mc:Ignorable="d"
+        Title="TechVault"
+        Height="450"
+        Width="450"
+        ResizeMode="NoResize"
+        x:Name="OpenedDatabase"
+        Icon="safe.png">
+   <Grid>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="1*" />
+         <RowDefinition Height="15*" />
+      </Grid.RowDefinitions>
+      <WrapPanel Grid.Row="0"
+                 Background="DimGray">
+         <Button Height="15"
+                 Width="15"
+                 Margin="10,5,0,0"
+                 Background="AliceBlue"
+                 Click="AddEntry"
+                 ToolTip="Add new entry">
+            <Image Source="key.png" />
+         </Button>
+         <Button Height="15"
+                 Width="15"
+                 Margin="10,5,0,0"
+                 Background="Yellow"
+                 Click="AddGroup"
+                 ToolTip="Add new group">
+            <Image Source="Group.png" />
+         </Button>
+
+      </WrapPanel>
+      <Grid Grid.Row="1">
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*" />
+            <ColumnDefinition Width="65*" />
+            <ColumnDefinition Width="148*" />
+         </Grid.ColumnDefinitions>
+         <ListView Name="EntryGroupsList"
+                   Grid.Column="0"
+                   Background="Aquamarine"
+                   Margin="10"
+                   SelectionChanged="SelectedGroupChanged"
+                   SelectedItem=""
+                   Grid.ColumnSpan="2">
+            <ListView.ItemTemplate>
+               <DataTemplate>
+                  <TextBlock Text="{Binding Name}" />
+               </DataTemplate>
+            </ListView.ItemTemplate>
+         </ListView>
+         <ListView Name="EntryList"
+                   Grid.Column="2"
+                   Margin="0,10,10,10"
+                   Background="BlanchedAlmond"
+                   MouseDoubleClick="EditEntry">
+            <ListView.ItemTemplate>
+               <DataTemplate>
+                  <TextBlock Text="{Binding Title}" />
+               </DataTemplate>
+            </ListView.ItemTemplate>
+         </ListView>
+      </Grid>
+   </Grid>
+</Window>

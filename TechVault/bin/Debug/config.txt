@@ -1,0 +1,1 @@
+{"DefaultDatabasePath":"C:\\Users\\j.zamojcin\\Documents\\database.tspd"}

@@ -1,0 +1,110 @@
+﻿<Window x:Class="TechVault.LaunchDatabaseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TechVault"
+        mc:Ignorable="d"
+        Title="TechVault"
+        Height="250"
+        Width="450"
+        ResizeMode="NoResize"
+        Icon="safe.png">
+   <Grid>
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="1*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="0.5*"/>
+         <RowDefinition Height="1*" />
+         <RowDefinition Height="1*" />
+         <RowDefinition Height="0.5*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0"
+                 Text="Select password database file or create new file"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="374"
+                 IsEnabled="False"
+                 IsHitTestVisible="False"
+                 FontWeight="Bold"
+                 Background="#FF8BA08B" />
+      <WrapPanel Grid.Row="1"
+                 Margin="0,0,0,0">
+         <StackPanel>
+            <RadioButton x:Name="ExistingDatabaseRadio"
+                         Content="Select Database:"
+                         GroupName="SelectDatabase"
+                         IsChecked="True"
+                         Margin="15,12.5,0,0"
+                         FontWeight="Bold">
+            </RadioButton>
+            <TextBlock Text="Master Password:"
+                       Margin="35,12.5,0,0"
+                       HorizontalAlignment="Center">
+            </TextBlock>
+         </StackPanel>
+         <StackPanel>
+            <TextBox x:Name="ExistingDatabasePath"
+                     Width="214.134"
+                     Margin="15,10,0,0"
+                     IsEnabled="True" 
+                     Height="20"
+                     TextChanged="ExistingDatabasePathChanged"/>
+            <PasswordBox x:Name="ExistingDatabasePassword"
+                     Width="214.134"
+                     Height="20"
+                     Margin="15,10,0,0"
+                     IsEnabled="True"/>
+         </StackPanel>
+         <Button x:Name="ExistingDatabaseSearch"
+                 Content=". . ."
+                 Width="30"
+                 Margin="5,10,0,0" 
+                 VerticalAlignment="Top"
+                 Click="SearchDatabaseFileExisting"/>
+      </WrapPanel>
+      <WrapPanel Grid.Row="2">
+         <StackPanel>
+            <RadioButton x:Name="NewDatabaseRadio"
+                         Content="Create Database:"
+                         GroupName="SelectDatabase"
+                         Margin="15,12.5,0,0"
+                         FontWeight="Bold">
+            </RadioButton>
+            <TextBlock Text="Master Password:"
+                       Margin="35,12.5,0,0"
+                       HorizontalAlignment="Center">
+            </TextBlock>
+         </StackPanel>
+         <StackPanel>
+            <TextBox x:Name="NewDatabasePath"
+                     Width="214.134"
+                     Margin="13,10,0,0"
+                     IsEnabled="True"
+                     Height="20" />
+            <PasswordBox x:Name="NewDatabasePassword"
+                         Width="214.134"
+                         Height="20"
+                         Margin="13,10,0,0"
+                         IsEnabled="True" />
+         </StackPanel>
+         <Button x:Name="NewDatabaseSearch"
+                 Content=". . ."
+                 Width="30"
+                 Margin="5,10,0,0"
+                 VerticalAlignment="Top" 
+                 Click="SearchDatabaseFileCreate"/>
+      </WrapPanel>
+      <Button Grid.Row="3"
+              x:Name="StartProgram"
+              Content="Start"
+              Click="StartDatabase"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Height="20"
+              Margin="0,0,0,0"
+              Width="38">
+      </Button>
+   </Grid>
+</Window>
