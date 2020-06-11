@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace TechVault
 {
+   //not working
    public class AESManager
    {
       //encryption key length in bytes [16,24,32]
       const int KEY_SIZE = 16;
+      private const string MAGIC_WORD = "<[O_o]/";
 
       public static byte[] Encrypt(string plainText, string key)
       {

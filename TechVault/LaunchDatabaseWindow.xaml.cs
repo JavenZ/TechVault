@@ -21,7 +21,6 @@ namespace TechVault
 
    public partial class LaunchDatabaseWindow : Window
    {
-      private const string MAGIC_WORD = "<[O_o]/";
 
       public LaunchDatabaseWindow()
       {
@@ -89,22 +88,6 @@ namespace TechVault
                   {
                     MessageBox.Show("Incorrect password", "Error");
                   }
-
-                  //Console.WriteLine( $"Read text: {readMsg} char #: {readMsg.Length}" );
-                  //byte[] encrypted = new byte[readMsg.Length];
-                  //for (int i = 0; i < readMsg.Length; i++ )
-                  //{
-                  //   encrypted[i] = (byte) readMsg.ToCharArray()[i];
-                  //}
-                  //Console.WriteLine( Encoding.ASCII.GetString(encrypted) );
-                  //foreach ( byte b in AESManager.Encrypt( MAGIC_WORD, ExistingDatabasePassword.Password ))
-                  //{
-                  //   Console.Write( b );
-                  //}
-                  //Console.WriteLine();
-                  //Console.WriteLine( $"Expected: {AESManager.Decrypt( ( AESManager.Encrypt( MAGIC_WORD, ExistingDatabasePassword.Password ) ), ExistingDatabasePassword.Password ) } ");
-                  //string decryptedMsg = AESManager.Decrypt( encrypted, ExistingDatabasePassword.Password);
-                  //Console.WriteLine($"Actual: {decryptedMsg} ");
                }
             } else
             {
@@ -117,11 +100,6 @@ namespace TechVault
             {
                using (StreamWriter sw = File.CreateText(NewDatabasePath.Text) )
                {
-                  //sw.WriteLine( Encoding.ASCII.GetString( AESManager.Encrypt( MAGIC_WORD, NewDatabasePassword.Password ) ) );
-                  //foreach (byte b in AESManager.Encrypt( MAGIC_WORD, NewDatabasePassword.Password ))
-                  //{
-                  //   sw.Write( b );
-                  //}
                   Database database = new Database();
                   database.Password = NewDatabasePassword.Password;
 
@@ -131,11 +109,6 @@ namespace TechVault
                   database.Groups.Add( new Group( "Productivity" ) );
 
                   database.Entries.Add( new Entry( "Personal Email", "john.smith@gmail.com", "password", "This is the entry for my personal email!", "Productivity") );
-                  //database.Entries.Add( new Entry( "Facebook", "Social" ) );
-                  //database.Entries.Add( new Entry( "TechSmith Email", "Work" ) );
-                  //database.Entries.Add( new Entry( "Plural Sight", "Productivity" ) );
-                  //database.Entries.Add( new Entry( "Zoom", "Work" ) );
-
                   sw.Write(JsonConvert.SerializeObject( database ));
                }
 
